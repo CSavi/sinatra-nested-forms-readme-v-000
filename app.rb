@@ -2,18 +2,18 @@ require_relative 'config/environment'
 
 class App < Sinatra::Base
 
-  get '/' do 
-    erb :new 
-  end 
+  get '/' do
+    erb :new
+  end
 
-  post '/student' do 
+  post '/student' do
     @student = Student.new(params[:student])
 
     params[:student][:courses].each do |details|
       Course.new(details)
-    erb :student 
+    end 
 
-    @courses = Courses.all 
-  end    
-  
+    @courses = Course.all  
+    erb :student
+  end
 end
